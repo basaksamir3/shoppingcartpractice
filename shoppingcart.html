@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shopping Cart UI</title>
+	<link rel="stylesheet" type="text/css" href="./style.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,900" rel="stylesheet">
+</head>
+<body>
+   <div class="CartContainer">
+   	   <div class="Header">
+   	   	<h3 class="Heading">Shopping Cart</h3>
+   	   	<h5 class="Action">Remove all</h5>
+   	   </div>
+
+   	   <div class="Cart-Items">
+   	   	  <div class="image-box">
+   	   	  	<img src="image/apple.png" style = height:120px; />
+   	   	  </div>
+   	   	  <div class="about">
+   	   	  	<h1 class="title">Apple Juice</h1>
+   	   	  	<h3 class="subtitle">250ml</h3>
+   	   	  	
+   	   	  </div>
+   	   	  <div class="counter">
+   	   	  	<div onclick="handleClick('apple',true)" class="btn" id="apple-increase">+</div>
+   	   	  	<div class="count" id="apple-count">1</div>
+			
+   	   	  	<div onclick="handleClick('apple',false)" class="btn" id="apple-decrease">-</div>
+   	   	  </div>
+   	   	  <div class="prices">
+			<h3>Unit Price</h3>
+   	   	  	<div  class="amount">$<span id="apple-total">3</span></div>
+   	   	  	
+   	   	  </div>
+   	   </div>
+
+   	   <div class="Cart-Items pad">
+   	   	  <div class="image-box">
+   	   	  	<img src="image/grapes.png" style = height:120px; />
+   	   	  </div>
+   	   	  <div class="about">
+   	   	  	<h1 class="title">Grapes Juice</h1>
+   	   	  	<h3 class="subtitle">250ml</h3>
+   	   	  
+   	   	  </div>
+   	   	  <div class="counter">
+   	   	  	<div onclick="handleClick('Grapes',true)" class="btn" id="Grapes-increase">+</div>
+   	   	  	<div id="Grapes-count"class="count">1</div>
+   	   	  	<div onclick="handleClick('Grapes',false)" class="btn" id="Grapes-decrease">-</div>
+   	   	  </div>
+   	   	  <div class="prices">
+					<h3>Unit Price</h3>
+   	   	  	<div class="amount">$<span id="Grapes-total">3.5</span></div>
+   	   	  	
+   	   	  </div>
+   	   </div>
+   	 <hr> 
+   	 <div class="checkout">
+   	 <div class="total">
+   	 	<div>
+   	 		<div class="Subtotal">Sub-Total</div>
+   	 	</div>
+   	 	<div class="total-amount">$<span id = "grand-total">6.5</span></div>
+   	 </div>
+   	 <button class="button">Checkout</button></div>
+   </div>
+   <script>
+	//    document.getElementById("apple-increase").addEventListener('click',function () {
+	// 	const  appleInput  = document.getElementById("apple-count").innerHTML;
+	// 	const appleCount = parseFloat(appleInput);
+	// 	const appleNewCount = appleCount + 1;
+	// 	document.getElementById("apple-count").innerHTML = appleNewCount;
+  
+	//    })
+
+	//    document.getElementById("apple-decrease").addEventListener('click',function () {
+	// 	const  appleInput  = document.getElementById("apple-count").innerHTML;
+	// 	const appleCount = parseFloat(appleInput);
+	// 	const appleNewCount = appleCount - 1;
+	// 	document.getElementById("apple-count").innerHTML = appleNewCount;
+  
+	//    })
+	function handleClick(product, Isincrease){
+		var  productInput  = document.getElementById(product+"-count");
+		var productCount = parseFloat(productInput.innerHTML);
+		var productNewCount = productCount ;
+		if(Isincrease == true){
+			productNewCount = productCount + 1;
+		}
+		if(Isincrease == false && productCount > 0){
+			 productNewCount = productCount - 1;	
+		}
+		productInput .innerHTML = productNewCount;
+
+		
+
+		let productTotal = 0;
+
+		if(product == 'apple'){
+			productTotal = productNewCount * 3;
+		}
+		if(product == 'Grapes'){
+			productTotal = productNewCount * 3.5;
+		}
+		document.getElementById(product+"-total").innerHTML = productTotal;
+		
+		
+		calculate();
+
+		
+	}
+	function calculate(){
+		const appleTotal = document.getElementById("apple-total");
+		const appleNewCount = parseFloat(appleTotal.innerText);
+		console.log(appleNewCount);
+		const grapesTotal =document.getElementById("Grapes-total");
+		const grapesNewCount = parseFloat(grapesTotal.innerText);
+		console.log(grapesNewCount);
+		const grandTotal = grapesNewCount + appleNewCount ;
+		console.log(grandTotal);
+		const grandTotalAmount = document.getElementById("grand-total");
+		const newGrandTotal = parseFloat(grandTotalAmount.innerText);
+		grandTotalAmount.innerText= grandTotal;
+	}
+   </script>
+</body>
+</html>
