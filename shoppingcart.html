@@ -6,7 +6,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,900" rel="stylesheet">
 </head>
 <body>
-   <div class="CartContainer">
+   <div id = "main-area"class="CartContainer">
    	   <div class="Header">
    	   	<h3 class="Heading">Shopping Cart</h3>
    	   	<h5 class="Action">Remove all</h5>
@@ -62,8 +62,14 @@
    	 	</div>
    	 	<div class="total-amount">$<span id = "grand-total">6.5</span></div>
    	 </div>
-   	 <button class="button">Checkout</button></div>
+   	 <button id = "checkout"class="button">Checkout</button></div>
    </div>
+   <div id="successfully">
+	   <h1>
+		  Your Order Place Successfully
+	   </h1>
+	   <p>Thank you for purchasing your product by Prioshi Store.</p>
+	</div>
    <script>
 	//    document.getElementById("apple-increase").addEventListener('click',function () {
 	// 	const  appleInput  = document.getElementById("apple-count").innerHTML;
@@ -122,6 +128,14 @@
 		const newGrandTotal = parseFloat(grandTotalAmount.innerText);
 		grandTotalAmount.innerText= grandTotal;
 	}
+
+	document.getElementById("checkout").addEventListener("click",function(){
+		const mainArea = document.getElementById("main-area");
+		mainArea.style.display="none";
+		const successfull = document.getElementById("successfully");
+		successfull.style.display = 'block';
+		
+	})
    </script>
 </body>
 </html>

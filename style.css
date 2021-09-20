@@ -180,3 +180,6 @@ hr{
 	font-weight: 600;
 	color: #202020;
 }
+#successfully{
+	display: none;
+}
