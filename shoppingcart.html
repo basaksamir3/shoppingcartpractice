@@ -130,10 +130,17 @@
 	}
 
 	document.getElementById("checkout").addEventListener("click",function(){
-		const mainArea = document.getElementById("main-area");
+		const grandTotal = document.getElementById("grand-total").innerText;
+		if(grandTotal != 0){
+			const mainArea = document.getElementById("main-area");
 		mainArea.style.display="none";
 		const successfull = document.getElementById("successfully");
 		successfull.style.display = 'block';
+		}
+		else{
+			alert("Please select product ");
+		}
+		
 		
 	})
    </script>
